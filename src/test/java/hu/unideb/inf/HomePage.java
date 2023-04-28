@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class HomePage {
@@ -20,29 +19,29 @@ public class HomePage {
     @FindBy(css = "#checkout_summary_container > div > div.summary_info > div.summary_info_label.summary_total_label")
     private WebElement priceLabel;
 
-    private static final Map<String, By> textFields = new HashMap<String, By>() {{
-       put("Username", By.id("user-name"));
-       put("Password", By.id("password"));
-       put("First Name", By.id("first-name"));
-       put("Last Name", By.id("last-name"));
-       put("Zip Code", By.id("postal-code"));
-    }};
+    private static final Map<String, By> textFields = Map.of(
+       "Username", By.id("user-name"),
+       "Password", By.id("password"),
+       "First Name", By.id("first-name"),
+       "Last Name", By.id("last-name"),
+       "Zip Code", By.id("postal-code")
+    );
 
-    private static final Map<String, By> itemButtons = new HashMap<String, By>() {{
-       put("Sauce Labs Backpack", By.id("add-to-cart-sauce-labs-backpack"));
-       put("Sauce Labs Bike Light", By.id("add-to-cart-sauce-labs-bike-light"));
-       put("Sauce Labs Bolt T-Shirt", By.id("add-to-cart-sauce-labs-bolt-t-shirt"));
-       put("Sauce Labs Fleece Jacket", By.id("add-to-cart-sauce-labs-fleece-jacket"));
-       put("Sauce Labs Onesie", By.id("add-to-cart-sauce-labs-onesie"));
-       put("Test.allTheThings() T-Shirt (Red)", By.id("add-to-cart-test.allthethings()-t-shirt-(red)"));
-    }};
+    private static final Map<String, By> itemButtons = Map.of(
+       "Sauce Labs Backpack", By.id("add-to-cart-sauce-labs-backpack"),
+       "Sauce Labs Bike Light", By.id("add-to-cart-sauce-labs-bike-light"),
+       "Sauce Labs Bolt T-Shirt", By.id("add-to-cart-sauce-labs-bolt-t-shirt"),
+       "Sauce Labs Fleece Jacket", By.id("add-to-cart-sauce-labs-fleece-jacket"),
+       "Sauce Labs Onesie", By.id("add-to-cart-sauce-labs-onesie"),
+       "Test.allTheThings() T-Shirt (Red)", By.id("add-to-cart-test.allthethings()-t-shirt-(red)")
+    );
 
-    private static final Map<String, By> navigationButtons = new HashMap<String, By>() {{
-        put("Login", By.id("login-button"));
-        put("Cart", By.className("shopping_cart_link"));
-        put("Checkout", By.id("checkout"));
-        put("Continue", By.id("continue"));
-    }};
+    private static final Map<String, By> navigationButtons = Map.of(
+        "Login", By.id("login-button"),
+        "Cart", By.className("shopping_cart_link"),
+        "Checkout", By.id("checkout"),
+        "Continue", By.id("continue")
+    );
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
