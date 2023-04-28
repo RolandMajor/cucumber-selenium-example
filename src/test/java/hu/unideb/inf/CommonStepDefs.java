@@ -22,7 +22,7 @@ public class CommonStepDefs extends AbstractStepDefs {
     }
 
     @AfterAll
-    public static void tearDown() {
+    public static void cleanUp() {
         homePage.closePage();
     }
 
