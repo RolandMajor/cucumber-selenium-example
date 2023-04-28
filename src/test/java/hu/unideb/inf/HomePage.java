@@ -15,28 +15,18 @@ public class HomePage {
 
     private final WebDriver driver;
 
-    @FindBy(id = "user-name")
-    private WebElement usernameField;
-    @FindBy(id = "password")
-    private WebElement passwordField;
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
     @FindBy(css = "#login_button_container > div > form > div.error-message-container.error > h3")
     private WebElement errorMessage;
-    @FindBy(className = "shopping_cart_link")
-    private WebElement cart;
-    @FindBy(id = "checkout")
-    private WebElement checkoutButton;
-    @FindBy(id = "first-name")
-    private WebElement firstnameField;
-    @FindBy(id = "last-name")
-    private WebElement lastnameField;
-    @FindBy(id = "postal-code")
-    private WebElement zipcodeField;
-    @FindBy(id = "continue")
-    private WebElement continueButton;
     @FindBy(css = "#checkout_summary_container > div > div.summary_info > div.summary_info_label.summary_total_label")
     private WebElement priceLabel;
+
+    private static final Map<String, By> textFields = new HashMap<String, By>() {{
+       put("Username", By.id("user-name"));
+       put("Password", By.id("password"));
+       put("First Name", By.id("first-name"));
+       put("Last Name", By.id("last-name"));
+       put("Zip Code", By.id("postal-code"));
+    }};
 
     private static final Map<String, By> itemButtons = new HashMap<String, By>() {{
        put("Sauce Labs Backpack", By.id("add-to-cart-sauce-labs-backpack"));
@@ -45,6 +35,13 @@ public class HomePage {
        put("Sauce Labs Fleece Jacket", By.id("add-to-cart-sauce-labs-fleece-jacket"));
        put("Sauce Labs Onesie", By.id("add-to-cart-sauce-labs-onesie"));
        put("Test.allTheThings() T-Shirt (Red)", By.id("add-to-cart-test.allthethings()-t-shirt-(red)"));
+    }};
+
+    private static final Map<String, By> navigationButtons = new HashMap<String, By>() {{
+        put("Login", By.id("login-button"));
+        put("Cart", By.className("shopping_cart_link"));
+        put("Checkout", By.id("checkout"));
+        put("Continue", By.id("continue"));
     }};
 
     public HomePage(WebDriver driver) {
@@ -60,16 +57,12 @@ public class HomePage {
         driver.quit();
     }
 
-    public void fillOutUserName(String username) {
-        usernameField.sendKeys(username);
+    public void fillOutField(String field, String text) {
+        driver.findElement(textFields.get(field)).sendKeys(text);
     }
 
-    public void fillOutPassword(String password) {
-        passwordField.sendKeys(password);
-    }
-
-    public void clickLoginButton() {
-        loginButton.click();
+    public void clickButton(String button) {
+        driver.findElement(navigationButtons.get(button)).click();
     }
 
     public String getErrorMessage() {
@@ -78,30 +71,6 @@ public class HomePage {
 
     public void addItemToCart(String item) {
         driver.findElement(itemButtons.get(item)).click();
-    }
-
-    public void clickCart() {
-        cart.click();
-    }
-
-    public void clickCheckoutButton() {
-        checkoutButton.click();
-    }
-
-    public void fillOutFirstName(String firstname) {
-        firstnameField.sendKeys(firstname);
-    }
-
-    public void fillOutLastName(String lastname) {
-        lastnameField.sendKeys(lastname);
-    }
-
-    public void fillOutZipCode(String zipcode) {
-        zipcodeField.sendKeys(zipcode);
-    }
-
-    public void clickContinue() {
-        continueButton.click();
     }
 
     public String getTotal() {

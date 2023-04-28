@@ -1,7 +1,6 @@
 package hu.unideb.inf;
 
 import io.cucumber.java.AfterAll;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -12,23 +11,19 @@ public class CommonStepDefs extends AbstractStepDefs {
         homePage.openPage();
     }
 
-    @Given("the Username field is filled with {string}")
-    public void theUsernameFieldIsFilledWithUsername(String username) {
-        homePage.fillOutUserName(username);
+    @Given("the {string} field is filled with {string}")
+    public void theFieldIsFilledWithText(String field, String text) {
+        homePage.fillOutField(field, text);
     }
 
-    @And("the Password field is filled with {string}")
-    public void thePasswordFieldIsFilledWithPassword(String password) {
-        homePage.fillOutPassword(password);
-    }
-
-    @When("the Login button is clicked")
-    public void theLoginButtonIsClicked() {
-        homePage.clickLoginButton();
+    @When("the {string} button is clicked")
+    public void theLoginButtonIsClicked(String button) {
+        homePage.clickButton(button);
     }
 
     @AfterAll
     public static void tearDown() {
         homePage.closePage();
     }
+
 }
