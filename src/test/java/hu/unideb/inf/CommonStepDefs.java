@@ -17,7 +17,7 @@ public class CommonStepDefs extends AbstractStepDefs {
     }
 
     @When("the {string} button is clicked")
-    public void theLoginButtonIsClicked(String button) {
+    public void theButtonIsClicked(String button) {
         homePage.clickButton(button);
     }
 
