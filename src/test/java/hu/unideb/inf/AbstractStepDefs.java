@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+
+
 import java.time.Duration;
 
 public abstract class AbstractStepDefs {
@@ -18,6 +22,10 @@ public abstract class AbstractStepDefs {
 
     static {
 
+        /*
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().clearResolutionCache().setup();
+        */
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         //options.setHeadless(true);
