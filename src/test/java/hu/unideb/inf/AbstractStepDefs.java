@@ -28,7 +28,7 @@ public abstract class AbstractStepDefs {
         */
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        //options.setHeadless(true);
+        //options.addArguments("--headless=new");
         //options.addArguments("--no-sandbox");
         driver = new ChromeDriver(options);
 
