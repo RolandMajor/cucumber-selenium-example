@@ -7,6 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShoppingStepDefs extends AbstractStepDefs {
 
+    public ShoppingStepDefs(TestContext testContext) {
+        super(testContext);
+    }
+
     @Given("the {string} is added to the cart")
     public void somethingIsAddedToTheCart(String item) {
         homePage.addItemToCart(item);

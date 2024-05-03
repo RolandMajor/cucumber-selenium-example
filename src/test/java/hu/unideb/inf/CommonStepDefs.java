@@ -6,6 +6,10 @@ import io.cucumber.java.en.When;
 
 public class CommonStepDefs extends AbstractStepDefs {
 
+    public CommonStepDefs(TestContext testContext) {
+        super(testContext);
+    }
+
     @Given("the home page is opened")
     public void theHomePageIsOpened() {
         homePage.openPage();
