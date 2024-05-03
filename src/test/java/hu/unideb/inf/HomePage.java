@@ -16,7 +16,7 @@ public class HomePage {
 
     @FindBy(css = "#login_button_container > div > form > div.error-message-container.error > h3")
     private WebElement errorMessage;
-    @FindBy(css = "#checkout_summary_container > div > div.summary_info > div.summary_info_label.summary_total_label")
+    @FindBy(css = "#checkout_summary_container > div > div.summary_info > div.summary_total_label")
     private WebElement priceLabel;
 
     private static final Map<String, By> textFields = Map.of(
